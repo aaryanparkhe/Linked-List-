@@ -1,0 +1,26 @@
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        
+        //using two pointer Method
+        
+        ListNode turtle = head; 
+        ListNode hare = head;
+        if(head == null){
+            return false;
+        }
+        while(hare != null && hare.next!=null){
+            turtle = turtle.next; // 1 Jump
+            hare = hare.next.next;  //2 Jump
+            
+            if(turtle==hare){
+                return true;
+            }
+            
+        }
+        return false;
+        
+    }
+}
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)
