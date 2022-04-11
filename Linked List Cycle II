@@ -1,0 +1,36 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        
+      
+        //using two pointer Method
+        
+        ListNode turtle = head; 
+        ListNode hare = head;
+        ListNode detect = head;
+        
+        if(head == null){
+            return null;
+        }
+        while(hare != null && hare.next!=null){
+            turtle = turtle.next; // 1 Jump
+            hare = hare.next.next;  //2 Jump
+           if(turtle == hare){
+             
+               while(turtle != detect){
+                   turtle = turtle.next;
+                   detect = detect.next;
+               }
+               return detect;
+               
+               
+           }
+       }
+        return null;
+   }
+}
+   
+
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)
+
