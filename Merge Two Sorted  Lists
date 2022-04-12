@@ -1,0 +1,53 @@
+
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        
+        ListNode fake = new ListNode(0);
+        ListNode prev = fake;
+        ListNode p = list1;
+        ListNode q = list2;
+            
+            
+  //edge cases:-
+        
+        if(list1==null){
+            return list2;
+        }
+        if(list2==null){
+            return list1;
+        }
+// comparing values of the nodes.   
+
+        while(p != null && q != null){
+            if(p.val<=q.val){
+                prev.next = p;
+                p = p.next;
+            }
+            else {
+                prev.next=q;
+                q=q.next;
+            }
+        prev=prev.next;
+        }
+        
+  // for Remaining elements.
+        
+        if(p!=null) {
+            prev.next=p;
+        }
+        if(q != null){
+            prev.next=q;
+        }
+        return fake.next;
+    }
+}
+
+
+
+
+Time Complexity :- O(n)
+SPace Complexity :- O(n)
+
+
+
