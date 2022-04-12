@@ -1,0 +1,36 @@
+
+class Solution {
+    public ListNode mergeNodes(ListNode head) {
+        ArrayList<Integer> res = new ArrayList<>();
+       ListNode temp = head;
+        ListNode prev = head;
+        while(temp!=null){
+            int count =0;
+            while(temp.val!=0){
+                count+=temp.val;
+                temp = temp.next;
+                }
+            temp = temp.next;
+            res.add(count);
+        }
+        ListNode fake = head;
+        for(int i=1;i<res.size();i++){
+            fake.val = res.get(i);
+            if(i==1){
+             fake = fake.next;       
+            }
+            else{
+                fake = fake.next;
+                prev = prev.next;
+            }
+        }
+        prev.next=null;
+        return head;
+    }
+}
+
+
+Time Complexity :- O(n);
+Space Complexity :- O(1);
+
+
