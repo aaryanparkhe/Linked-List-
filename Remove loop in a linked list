@@ -1,0 +1,53 @@
+
+
+class Solution
+{
+    
+    
+     
+  public static Node detectCycle(Node head) {
+        if(head == null)
+            return null;
+        Node slow=head;
+        Node fast=head;
+        
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+             if(slow==fast){
+                 return slow;
+                 }
+             
+             
+              
+        }
+        return null;
+    }
+    public static Node detectFirstNode(Node head){
+        Node join=detectCycle(head);
+        if(join==null)return null;
+        Node temp=head;
+        while(temp!=join){
+            temp=temp.next;
+            join=join.next;
+        }
+        return temp;
+    }
+    
+    public static void removeLoop(Node head){
+      
+        Node start=detectFirstNode(head);
+          if(start==null) return;
+        Node temp=start;
+        while(temp.next!=start){
+            temp=temp.next;
+        }
+        temp.next=null;
+        
+    }
+}
+
+
+
+Time COmplexity :- O(n)
+Space Complexity :- O(1)
