@@ -1,4 +1,12 @@
 
+This Problem Done by only 3 Steps:-
+1. Detect Cycle
+2. dtect Starting Point
+3. Remove loop (Starting point -> null)
+
+
+
+
 
 class Solution
 {
