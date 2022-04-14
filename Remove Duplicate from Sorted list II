@@ -1,0 +1,26 @@
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode fake = new ListNode(0,head);
+         ListNode prev = fake;
+        ListNode cur = head;
+        
+        while (cur!=null){
+            if(cur.next != null && cur.val == cur.next.val){
+                while(cur.next != null && cur.val == cur.next.val){
+                    cur = cur.next;
+                }
+                cur = cur.next;
+                prev.next = cur;
+            }
+            else {
+                prev = prev.next;
+                cur = cur.next;
+            }
+        }
+        return fake.next;
+     }
+}
+
+
+Time Complexity :- O(n)
+Space Complexity :- O(1);
