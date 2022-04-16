@@ -1,0 +1,46 @@
+
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        
+        
+        //Edge Cases:-
+        if(head==null || head.next==null || k==0) return head;
+        
+        
+        // count the number of nodes.
+        
+        int count=1;
+        ListNode cur = head;
+        while(cur.next != null){
+            count++;
+            cur = cur.next;
+        }
+        
+        //Then cur pointer point to null so connect to the head;
+        
+        cur.next = head;
+        
+        //we use modulo because if the k is greater then count , because we find               
+        how many nodes will rotate and After which nodes will next became null,
+        
+        k = k % count;
+        k =  count - k;
+        
+      //  After connecting to head , cur pointer start counting to head till k is            
+      greater than zero.
+        
+        while(k > 0){
+            cur = cur.next;
+            k--;
+        }
+        head = cur.next;
+        cur.next = null;
+        
+        return head;
+        
+    }
+}
+
+
+Time Complexity :- O(n);
+Space Complexity :- O(1);
